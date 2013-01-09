@@ -4,8 +4,6 @@
 // ==========================================================================
 /*globals ArrayBindings */
 
-sc_require('foos_controller');
-
 /** @class
 
   (Document Your Controller Here)
@@ -15,16 +13,8 @@ sc_require('foos_controller');
 ArrayBindings.barController = SC.ObjectController.create(
 /** @scope ArrayBindings.barController.prototype */ {
 
-    hasFoosBinding: SC.Binding.transform(function(value, binding) {
-      var has = NO;
-
-      if (!SC.none(value) && value > 0) {
-        has = YES;
-      }
-
-      return has;
-    }).from('ArrayBindings.foosController.length'),
-    foosBinding: 'ArraysBindings.foosController.arrangedObjects'
+    hasFoosBinding: SC.Binding.oneWay('ArrayBindings.foosController.length').bool(),
+    foosBinding: SC.Binding.oneWay('ArraysBindings.foosController.arrangedObjects')
 
 
 }) ;
